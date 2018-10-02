@@ -21,7 +21,6 @@ public class Main {
         Times ourTime = new Times(value, unit);
 
 
-
         while ((line = reader.readLine()) != null) {
             iSpace = line.indexOf(' ');
             value = Double.parseDouble(line.substring(0, iSpace));
@@ -37,27 +36,23 @@ public class Main {
         //Пункт 3:
 
         double distances[] = new double[speedsArrayList.size()];
-        distances[0] = speedsArrayList.get(0).getSpeed()*ourTime.getTime();
-        for (int i = 1; i<speedsArrayList.size();i++){
-            double distance = speedsArrayList.get(i).getSpeed()*ourTime.getTime();
-            
-            for (int j=1; j<=i; j++){
-                if(distance>distances[j-1]){
-                    for (int k = i;k>=j;k--){
-                        distances[k]=distances[k-1];
+        distances[0] = speedsArrayList.get(0).getSpeed() * ourTime.getTime();
+        for (int i = 1; i < speedsArrayList.size(); i++) {
+            double distance = speedsArrayList.get(i).getSpeed() * ourTime.getTime();
+
+            for (int j = 1; j <= i; j++) {
+                if (distance > distances[j - 1]) {
+                    for (int k = i; k >= j; k--) {
+                        distances[k] = distances[k - 1];
                     }
-                    distances[j-1]=distance;
+                    distances[j - 1] = distance;
                 }
             }
         }
-        for (double dist:distances
-             ) {
+        for (double dist : distances
+                ) {
             System.out.println(dist);
 
         }
-
-
-
     }
-
 }
