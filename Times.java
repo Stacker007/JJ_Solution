@@ -1,33 +1,30 @@
 public class Times extends TimeUnits {
-    double value;
-    int unit;
-    double time;//time in s
+    private double value;
+    private int unit;
+    private double time;//time in s
 
     Times(double value, int unit) {
         this.value = value;
         this.unit = unit;
-        this.time = time(unit);
+        this.time = time(value,unit);
 
     }
 
     Times(double value, String unit) {
-        super();
-        this.time = time(super.getIndexOfUnit(unit));
+        this.value = value;
+        this.unit = getIndexOfUnit(unit);
+        this.time = time(value,this.unit);
     }
 
+    public double getValue() {
+        return value;
+    }
 
-    public double time(int unit) { //return speed in m/h
-        switch (unit) {
-            case 0:
-                return value * 3600;//h
-            case 1:
-                return value * 60;//m
-            case 2:
-                return value;//s
-            default:
-                return -1;
+    public int getUnit() {
+        return unit;
+    }
 
-        }
-
+    public double getTime() {
+        return time;
     }
 }
